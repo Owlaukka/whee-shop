@@ -1,7 +1,6 @@
 const path = require('path');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-// const TerserPlugin = require("terser-webpack-plugin");
 
 module.exports = {
   context: path.resolve('./src'),
@@ -16,10 +15,6 @@ module.exports = {
         loader: 'babel-loader',
         exclude: [/node_modules/],
       },
-      // {
-      //   test: /\.css$/i,
-      //   use: ["style-loader", "css-loader"],
-      // },
     ],
   },
   plugins: [
@@ -35,12 +30,6 @@ module.exports = {
   },
   optimization: {
     minimize: true,
-    // minimizer: [
-    //   new TerserPlugin({
-    //     parallel: true,
-    //     cache: true,
-    //   }),
-    // ],
     moduleIds: 'deterministic',
     splitChunks: {
       chunks: 'all',

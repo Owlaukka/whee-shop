@@ -1,7 +1,8 @@
 import React from 'react';
 import ReactDom from 'react-dom';
+import App from './App';
 
 const appRoot = document.createElement('div');
-document.body.appendChild(appRoot);
+document.body.prepend(appRoot);
 
-ReactDom.render(<h1>Hello world!</h1>, appRoot);
+ReactDom.render(<App />, appRoot);

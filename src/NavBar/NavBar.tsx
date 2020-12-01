@@ -1,0 +1,68 @@
+import React from 'react';
+import styled from '@emotion/styled';
+
+import { ITheme } from '../theme';
+
+const Nav = styled('nav')<any>(({ theme }: { theme: ITheme }) => ({
+  backgroundColor: theme.colors.nav,
+  height: theme.sizes.navBarHeight,
+  position: 'fixed',
+  top: 0,
+  left: 0,
+  width: '100%',
+  '&:after': {
+    content: '""',
+    display: 'block',
+    position: 'absolute',
+    bottom: `-${theme.sizes.navBarTeethHeight}`,
+    width: '100%',
+    height: theme.sizes.navBarTeethHeight,
+    backgroundImage: `
+      linear-gradient(135deg, ${theme.colors.nav} 50%, transparent 50%),
+      linear-gradient(-135deg, ${theme.colors.nav} 50%, transparent 50%)
+    `,
+    backgroundSize: theme.sizes.navBarTeethHeight,
+    backgroundRepeat: 'repeat-x',
+  },
+}));
+
+const NavItemList = styled.ul({
+  margin: 0,
+  padding: 0,
+  listStyle: 'none',
+  height: '100%',
+  display: 'flex',
+  alignItems: 'center',
+});
+
+const NavItem = styled.li({
+  padding: '1rem',
+});
+
+const LogoNavItem = styled(NavItem)();
+
+const Logo = styled.h1({
+  margin: 0,
+});
+
+const TaglineNavItem = styled(NavItem)();
+
+const CartNavItem = styled(NavItem)({
+  marginLeft: 'auto',
+});
+
+const NavBar = () => (
+  <Nav>
+    <NavItemList>
+      <LogoNavItem>
+        <Logo>whee</Logo>
+      </LogoNavItem>
+      <TaglineNavItem>
+        The most definitive shape store in the world
+      </TaglineNavItem>
+      <CartNavItem>No items in cart</CartNavItem>
+    </NavItemList>
+  </Nav>
+);
+
+export default NavBar;
