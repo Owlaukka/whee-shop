@@ -22,6 +22,7 @@ module.exports = {
     project: 'tsconfig.json',
   },
   rules: {
+    '@typescript-eslint/comma-dangle': ['error', 'only-multiline'],
     'no-console': ['error', { allow: ['warn', 'error'] }],
   },
   overrides: [

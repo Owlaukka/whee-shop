@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { Link } from 'react-router-dom';
 import styled from '@emotion/styled';
 
 import { ITheme } from '../theme';
+import ShoppingCartContext from '../ShoppingCartContext';
 
 const Nav = styled('nav')<any>(({ theme }: { theme: ITheme }) => ({
   backgroundColor: theme.colors.nav,
@@ -51,18 +53,29 @@ const CartNavItem = styled(NavItem)({
   marginLeft: 'auto',
 });
 
-const NavBar = () => (
-  <Nav>
-    <NavItemList>
-      <LogoNavItem>
-        <Logo>whee</Logo>
-      </LogoNavItem>
-      <TaglineNavItem>
-        The most definitive shape store in the world
-      </TaglineNavItem>
-      <CartNavItem>No items in cart</CartNavItem>
-    </NavItemList>
-  </Nav>
-);
+const resolveCartItemCountText = (cartCount: number): string => {
+  if (cartCount === 0) return 'No items in cart';
+  return cartCount === 1 ? '1 item in cart' : `${cartCount} items in cart`;
+};
+
+const NavBar = () => {
+  const { cartItems } = useContext(ShoppingCartContext);
+  return (
+    <Nav>
+      <NavItemList>
+        <LogoNavItem>
+          <Link to="/">
+            <Logo>whee</Logo>
+          </Link>
+        </LogoNavItem>
+        <TaglineNavItem>
+          The most definitive shape store in the world
+        </TaglineNavItem>
+        <CartNavItem>{resolveCartItemCountText(cartItems.length)}</CartNavItem>
+        <Link to="/cart">Cart</Link>
+      </NavItemList>
+    </Nav>
+  );
+};
 
 export default NavBar;
