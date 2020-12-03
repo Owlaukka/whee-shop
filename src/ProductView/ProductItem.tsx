@@ -1,14 +1,10 @@
 import React, { useContext } from 'react';
 import styled from '@emotion/styled';
 import ShoppingCartContext from '../ShoppingCartContext';
+import { IProduct } from './ProductService';
 
 interface Props {
-  product: {
-    id: string | number;
-    name: string;
-    description: string;
-    price: number;
-  };
+  product: IProduct;
 }
 
 const ItemContainer = styled('li')({
@@ -73,9 +69,7 @@ const ProductItem = ({ product }: Props) => {
     ShoppingCartContext
   );
 
-  const isProductInCart = cartItems
-    .map((item: any) => item.id)
-    .includes(product.id);
+  const isProductInCart = cartItems.map((item) => item.id).includes(product.id);
 
   const onCartClick = isProductInCart
     ? () => removeFromCart(product)

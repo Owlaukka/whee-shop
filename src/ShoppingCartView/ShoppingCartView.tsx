@@ -18,7 +18,7 @@ const ShoppingCartView = () => {
       <h1>Cart</h1>
       <CartItemList>
         {cartItems.map((item) => (
-          <li>{item.name}</li>
+          <li key={item.id}>{item.name}</li>
         ))}
       </CartItemList>
       <div>

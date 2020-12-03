@@ -1,23 +1,34 @@
 import React, { useState } from 'react';
+import { IProduct } from './ProductView/ProductService';
 
 interface IShoppingCartContextProviderProps {
   children: React.ReactNode;
 }
 
+type AddToCartType = (newItem: IProduct) => void;
+
+type RemoveFromCartType = (itemToRemove: IProduct) => void;
+
+interface IShoppingCartContext {
+  cartItems: IProduct[];
+  addToCart: AddToCartType;
+  removeFromCart: RemoveFromCartType;
+}
+
 // TODO: type this and products
-const ShoppingCartContext = React.createContext({} as any);
+const ShoppingCartContext = React.createContext({} as IShoppingCartContext);
 
 export const ShoppingCartContextProvider = ({
   children,
 }: IShoppingCartContextProviderProps) => {
-  const [cartItems, setCartItems] = useState([] as any[]);
+  const [cartItems, setCartItems] = useState<IProduct[]>([]);
 
-  const addToCart = (newItem: any) =>
+  const addToCart: AddToCartType = (newItem) =>
     setCartItems((prevItems) => [...prevItems, newItem]);
 
-  const removeFromCart = (newItem: any) =>
+  const removeFromCart: RemoveFromCartType = (itemToRemove) =>
     setCartItems((prevItems) =>
-      prevItems.filter((item: any) => item.id !== newItem.id)
+      prevItems.filter((item) => item.id !== itemToRemove.id)
     );
 
   return (

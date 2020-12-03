@@ -2,6 +2,8 @@ import React from 'react';
 import styled from '@emotion/styled';
 
 import ProductItem from './ProductItem';
+import useFetchData from '../common/useFetchData';
+import { fetchProducts, IProduct } from './ProductService';
 
 const ProductList = styled('ul')({
   margin: 0,
@@ -13,31 +15,16 @@ const ProductList = styled('ul')({
 });
 
 const ProductView = () => {
-  const products = [
-    {
-      id: 1,
-      name: 'Circle',
-      description: "Perfect choice when you don't need any corners.",
-      price: 999,
-    },
-    {
-      id: 2,
-      name: 'Rectangle',
-      description: "For once, it's a great idea to think inside the box.",
-      price: 899,
-    },
-    {
-      id: 3,
-      name: 'Triangle',
-      description: 'A true classic with three elegant corners.',
-      price: 1009,
-    },
-  ];
+  const { data: products, isLoading } = useFetchData<IProduct[]>(fetchProducts);
+
   return (
     <ProductList>
-      {products.map((product) => (
-        <ProductItem key={product.id} product={product} />
-      ))}
+      {isLoading && <li>Loading...</li>}
+      {!isLoading &&
+        products &&
+        products.map((product) => (
+          <ProductItem key={product.id} product={product} />
+        ))}
     </ProductList>
   );
 };
