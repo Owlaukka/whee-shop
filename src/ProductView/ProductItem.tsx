@@ -73,7 +73,9 @@ const ProductItem = ({ product }: Props) => {
     ShoppingCartContext
   );
 
-  const isProductInCart = cartItems.map((item) => item.id).includes(product.id);
+  const isProductInCart = cartItems
+    .map((item: any) => item.id)
+    .includes(product.id);
 
   const onCartClick = isProductInCart
     ? () => removeFromCart(product)

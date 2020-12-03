@@ -8,6 +8,7 @@ import NavBar from './NavBar/NavBar';
 import GlobalTheme, { ITheme } from './theme';
 import GlobalStyles from './theme/GlobalStyles';
 import { ShoppingCartContextProvider } from './ShoppingCartContext';
+import ShoppingCartView from './ShoppingCartView/ShoppingCartView';
 
 const ViewContainer = styled<any>('main')(({ theme }: { theme: ITheme }) => ({
   marginTop: `calc(${theme.sizes.navBarHeight} + ${theme.sizes.navBarTeethHeight})`,
@@ -19,8 +20,8 @@ const ViewContainer = styled<any>('main')(({ theme }: { theme: ITheme }) => ({
 const App = () => (
   <ThemeProvider theme={GlobalTheme}>
     <Global styles={GlobalStyles} />
-    <ShoppingCartContextProvider>
-      <Router>
+    <Router>
+      <ShoppingCartContextProvider>
         <NavBar />
         <ViewContainer>
           <Switch>
@@ -28,15 +29,15 @@ const App = () => (
               <ProductView />
             </Route>
             <Route path="/cart">
-              <h1>Shopping cart</h1>
+              <ShoppingCartView />
             </Route>
             <Route exact path="/">
               <ProductView />
             </Route>
           </Switch>
         </ViewContainer>
-      </Router>
-    </ShoppingCartContextProvider>
+      </ShoppingCartContextProvider>
+    </Router>
   </ThemeProvider>
 );
 
