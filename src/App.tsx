@@ -7,7 +7,7 @@ import ProductView from './ProductView/ProductView';
 import NavBar from './NavBar/NavBar';
 import GlobalTheme, { ITheme } from './theme';
 import GlobalStyles from './theme/GlobalStyles';
-import { ShoppingCartContextProvider } from './ShoppingCartContext';
+import { ShoppingCartContextProvider } from './ShoppingCartView/ShoppingCartContext';
 import ShoppingCartView from './ShoppingCartView/ShoppingCartView';
 
 const ViewContainer = styled<any>('main')(({ theme }: { theme: ITheme }) => ({

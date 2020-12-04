@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { IProduct } from './ProductView/ProductService';
+import { IProduct } from '../ProductView/ProductService';
 
 interface IShoppingCartContextProviderProps {
   children: React.ReactNode;

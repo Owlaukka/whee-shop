@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import styled from '@emotion/styled';
-import ShoppingCartContext from '../ShoppingCartContext';
+import ShoppingCartContext from './ShoppingCartContext';
 
 const CartItemList = styled('ul')({
   margin: 0,
