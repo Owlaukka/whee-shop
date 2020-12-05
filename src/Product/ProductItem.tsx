@@ -1,7 +1,9 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import styled from '@emotion/styled';
-import ShoppingCartContext from '../ShoppingCartView/ShoppingCartContext';
+import ShoppingCartContext from '../ShoppingCart/ShoppingCartContext';
 import { IProduct } from './ProductService';
+import { Button } from '../common/components';
+import formatCurrency from '../common/helpers/formatCurrency';
 
 interface Props {
   product: IProduct;
@@ -53,27 +55,33 @@ const CartSection = styled('div')({
 
 const ProductPrice = styled('div')();
 
-const formatPrice = (price: number) =>
-  price.toLocaleString(undefined, {
-    style: 'currency',
-    currency: 'EUR',
-    minimumFractionDigits: 0,
-    maximumFractionDigits: 2,
-  });
+const formatPrice = (price: number) => formatCurrency(price);
 
-const resolveCartButtonText = (isProductInCart: boolean): string =>
-  isProductInCart ? 'Remove from cart' : 'Add to cart';
+const resolveCartButtonText = (
+  isProductInCart: boolean,
+  isLoading: boolean
+): string =>
+  isProductInCart
+    ? `Remov${isLoading ? 'ing' : 'e'} from cart`
+    : `Add${isLoading ? 'ing' : ''} to cart`;
 
 const ProductItem = ({ product }: Props) => {
+  const [isLoading, setIsLoading] = useState(false);
   const { cartItems, addToCart, removeFromCart } = useContext(
     ShoppingCartContext
   );
 
   const isProductInCart = cartItems.map((item) => item.id).includes(product.id);
 
-  const onCartClick = isProductInCart
-    ? () => removeFromCart(product)
-    : () => addToCart(product);
+  const onCartClick = async () => {
+    const clickAction = isProductInCart ? removeFromCart : addToCart;
+    try {
+      setIsLoading(true);
+      await clickAction(product);
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
   return (
     <ItemContainer>
@@ -85,9 +93,9 @@ const ProductItem = ({ product }: Props) => {
 
       <CartSection>
         <ProductPrice>{formatPrice(product.price)}</ProductPrice>
-        <button type="button" onClick={onCartClick}>
-          {resolveCartButtonText(isProductInCart)}
-        </button>
+        <Button disabled={isLoading} onClick={onCartClick}>
+          {resolveCartButtonText(isProductInCart, isLoading)}
+        </Button>
       </CartSection>
     </ItemContainer>
   );

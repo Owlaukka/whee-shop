@@ -3,12 +3,12 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { Global, ThemeProvider } from '@emotion/react';
 import styled from '@emotion/styled';
 
-import ProductView from './ProductView/ProductView';
+import ProductView from './Product/ProductView';
 import NavBar from './NavBar/NavBar';
 import GlobalTheme, { ITheme } from './theme';
 import GlobalStyles from './theme/GlobalStyles';
-import { ShoppingCartContextProvider } from './ShoppingCartView/ShoppingCartContext';
-import ShoppingCartView from './ShoppingCartView/ShoppingCartView';
+import { ShoppingCartContextProvider } from './ShoppingCart/ShoppingCartContext';
+import ShoppingCartView from './ShoppingCart/ShoppingCartView';
 
 const ViewContainer = styled<any>('main')(({ theme }: { theme: ITheme }) => ({
   marginTop: `calc(${theme.sizes.navBarHeight} + ${theme.sizes.navBarTeethHeight})`,

@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import styled from '@emotion/styled';
 
 import { ITheme } from '../theme';
-import ShoppingCartContext from '../ShoppingCartView/ShoppingCartContext';
+import ShoppingCartContext from '../ShoppingCart/ShoppingCartContext';
 
 const Nav = styled('nav')<any>(({ theme }: { theme: ITheme }) => ({
   backgroundColor: theme.colors.nav,
