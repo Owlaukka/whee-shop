@@ -41,7 +41,11 @@ const NavItem = styled.li({
   padding: '1rem',
 });
 
-const LogoNavItem = styled(NavItem)();
+const LogoNavItem = styled(NavItem)({
+  a: {
+    textDecoration: 'none',
+  },
+});
 
 const Logo = styled.h1({
   margin: 0,
