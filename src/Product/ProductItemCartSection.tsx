@@ -14,6 +14,8 @@ const CartSection = styled('div')({
   display: 'flex',
   flexDirection: 'column',
   alignItems: 'flex-end',
+  marginTop: 'auto',
+  marginLeft: 'auto',
 });
 
 const ProductPrice = styled('div')({

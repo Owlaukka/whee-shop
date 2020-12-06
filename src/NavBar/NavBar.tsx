@@ -55,7 +55,7 @@ const Logo = styled.h1({
   margin: 0,
   fontFamily: "'Pacifico', cursive",
   fontWeight: 'normal',
-  fontSize: '3.5rem',
+  fontSize: 'clamp(2.5rem, 20vw, 3.5rem)',
 });
 
 const TaglineNavItem = styled(NavItem)({

@@ -1,4 +1,4 @@
-export const BREAKPOINTS = { tablet: 870, phone: 660, smallPhone: 400 };
+export const BREAKPOINTS = { tablet: 850, phone: 660, smallPhone: 400 };
 
 export const MEDIA_QUERIES = {
   tablet: `@media (max-width: ${BREAKPOINTS.tablet}px)`,
