@@ -5,8 +5,7 @@
       "@babel/preset-env",
       {
         "useBuiltIns": "usage",
-        "corejs": "3.8.0",
-        "targets": "defaults, not ie 11, not edge < 80"
+        "corejs": "3.8.0"
       }
     ],
     "@babel/preset-react"
