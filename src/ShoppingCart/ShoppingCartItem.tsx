@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { Button } from '../common/components';
+import { Button, ProductInfo } from '../common/components';
 import ShoppingCartContext from './ShoppingCartContext';
 import { IProduct } from '../Product/ProductService';
 
@@ -19,7 +19,7 @@ const ShoppingCartItem = ({ item }: { item: IProduct }) => {
   };
   return (
     <li>
-      <h4>{item.name}</h4>
+      <ProductInfo product={item} />
       <Button disabled={isRemoveLoading} onClick={() => onRemoveClick(item)}>
         Remov{isRemoveLoading ? 'ing' : 'e'} item
       </Button>
