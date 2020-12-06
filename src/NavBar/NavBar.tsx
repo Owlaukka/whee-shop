@@ -5,7 +5,9 @@ import { FaShoppingCart } from 'react-icons/fa';
 
 import { ITheme } from '../theme';
 import ShoppingCartContext from '../ShoppingCart/ShoppingCartContext';
+import { MEDIA_QUERIES } from '../common/constants/breakpoints';
 
+// STYLED COMPONENTS ===================================================
 const Nav = styled('nav')<any>(({ theme }: { theme: ITheme }) => ({
   backgroundColor: theme.colors.nav,
   height: theme.sizes.navBarHeight,
@@ -58,12 +60,17 @@ const Logo = styled.h1({
 
 const TaglineNavItem = styled(NavItem)({
   fontStyle: 'italic',
-  paddingBottom: 0,
+  [MEDIA_QUERIES.tablet]: {
+    display: 'none',
+  },
 });
 
 const CartNavItem = styled(NavItem)({
   marginLeft: 'auto',
   fontStyle: 'italic',
+  [MEDIA_QUERIES.smallPhone]: {
+    display: 'none',
+  },
 });
 
 const ToCartNavItem = styled(NavItem)(
@@ -74,6 +81,9 @@ const ToCartNavItem = styled(NavItem)(
     fontSize: '1.5rem',
     transition: 'transform 200ms',
     position: 'relative',
+    [MEDIA_QUERIES.smallPhone]: {
+      marginLeft: 'auto',
+    },
     '&:hover': {
       backgroundColor: theme!.colors.text,
       transform: 'scale(1.1)',
@@ -107,7 +117,8 @@ const ToCartLink = styled(Link)({
   display: 'flex',
 });
 
-const CartIcon = styled(FaShoppingCart)({});
+const CartIcon = styled(FaShoppingCart)();
+// ====================================================================
 
 const resolveCartItemCountText = (cartCount: number): string => {
   if (cartCount === 0) return 'No items in cart';
