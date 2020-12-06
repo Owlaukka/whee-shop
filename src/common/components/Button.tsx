@@ -32,6 +32,7 @@ const StyledButton = styled(Button)(({ theme }: { theme?: ITheme }) => ({
   backgroundColor: theme!.colors.button.bg,
   borderRadius: '0px',
   fontSize: '1.2rem',
+  fontWeight: 'bold',
   padding: '0.2rem 1rem',
   '&:hover:not(:disabled)': {
     cursor: 'pointer',

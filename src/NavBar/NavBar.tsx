@@ -51,10 +51,13 @@ const Logo = styled.h1({
   margin: 0,
 });
 
-const TaglineNavItem = styled(NavItem)();
+const TaglineNavItem = styled(NavItem)({
+  fontStyle: 'italic',
+});
 
 const CartNavItem = styled(NavItem)({
   marginLeft: 'auto',
+  fontStyle: 'italic',
 });
 
 const resolveCartItemCountText = (cartCount: number): string => {

@@ -1,5 +1,7 @@
 import React, { useContext, useState } from 'react';
 import styled from '@emotion/styled';
+
+import { ITheme } from 'src/theme';
 import ShoppingCartContext from '../ShoppingCart/ShoppingCartContext';
 import { IProduct } from './ProductService';
 import { Button } from '../common/components';
@@ -27,19 +29,21 @@ const ProductInfo = styled('div')({
   `,
 });
 
-const ProductIcon = styled('div')({
+const ProductIcon = styled('div')(({ theme }: { theme?: ITheme }) => ({
   gridArea: 'product-icon',
   width: '7rem',
   height: '7rem',
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
-});
+  color: theme!.colors.accent,
+}));
 
 const ProductName = styled('h1')({
   margin: 0,
   gridArea: 'product-name',
   alignSelf: 'end',
+  fontStyle: 'italic',
 });
 
 const ProductDescription = styled('p')({
@@ -53,7 +57,10 @@ const CartSection = styled('div')({
   alignItems: 'flex-end',
 });
 
-const ProductPrice = styled('div')();
+const ProductPrice = styled('div')({
+  fontSize: '1.7rem',
+  marginBottom: '0.7rem',
+});
 
 const formatPrice = (price: number) => formatCurrency(price);
 
@@ -94,7 +101,7 @@ const ProductItem = ({ product }: Props) => {
       <CartSection>
         <ProductPrice>{formatPrice(product.price)}</ProductPrice>
         <Button disabled={isLoading} onClick={onCartClick}>
-          {resolveCartButtonText(isProductInCart, isLoading)}
+          {resolveCartButtonText(isProductInCart, isLoading).toUpperCase()}
         </Button>
       </CartSection>
     </ItemContainer>
