@@ -18,7 +18,9 @@ describe('Shopping cart view', () => {
       .first()
       .click();
 
-    cy.findByRole('link', { name: /cart/i }).should('be.visible').click();
+    cy.findByRole('link', { name: /shopping cart/i })
+      .should('be.visible')
+      .click();
     cy.findByRole('button', { name: /remove item/i }).should('be.visible');
     cy.findByRole('button', { name: /clear cart/i }).should('be.visible');
     cy.findByText(/no items in cart/i).should('not.exist');
@@ -34,7 +36,9 @@ describe('Shopping cart view', () => {
       .should('be.visible')
       .click();
 
-    cy.findByRole('link', { name: /cart/i }).should('be.visible').click();
+    cy.findByRole('link', { name: /shopping cart/i })
+      .should('be.visible')
+      .click();
 
     cy.findByRole('button', { name: /add to cart/i }).should('not.exist');
     cy.findByRole('button', { name: /checkout/i }).should('be.visible');
@@ -56,7 +60,9 @@ describe('Shopping cart view', () => {
       'have.length',
       2
     );
-    cy.findByRole('link', { name: /cart/i }).should('be.visible').click();
+    cy.findByRole('link', { name: /shopping cart/i })
+      .should('be.visible')
+      .click();
 
     cy.findByText(/Circle/i).should('be.visible');
     cy.findByText(/Triangle/i).should('be.visible');
@@ -92,7 +98,9 @@ describe('Shopping cart view', () => {
       .should('have.length', 1)
       .first()
       .click();
-    cy.findByRole('link', { name: /cart/i }).should('be.visible').click();
+    cy.findByRole('link', { name: /shopping cart/i })
+      .should('be.visible')
+      .click();
 
     cy.findByRole('button', { name: /clear cart/i }).should('not.exist');
     cy.findAllByText(/no items in cart/i).should('have.length', 2);

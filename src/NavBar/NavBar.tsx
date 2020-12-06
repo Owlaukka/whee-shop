@@ -129,7 +129,7 @@ const NavBar = () => {
         </TaglineNavItem>
         <CartNavItem>{resolveCartItemCountText(cartItems.length)}</CartNavItem>
         <ToCartNavItem id="Cart" itemCount={cartItems.length}>
-          <ToCartLink to="/cart">
+          <ToCartLink aria-label="Shopping cart" to="/cart">
             <CartIcon />
           </ToCartLink>
         </ToCartNavItem>

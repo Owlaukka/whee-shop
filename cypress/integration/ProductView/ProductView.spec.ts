@@ -11,7 +11,9 @@ describe('Product view', () => {
 
     cy.findByRole('heading', { name: /Cart$/ }).should('not.exist');
     cy.url().should('not.match', /cart$/);
-    cy.findByRole('link', { name: /cart/i }).should('be.visible').click();
+    cy.findByRole('link', { name: /shopping cart/i })
+      .should('be.visible')
+      .click();
     cy.url().should('match', /cart$/);
     cy.findByRole('heading', { name: /Cart$/ }).should('be.visible');
     cy.findByRole('button', { name: /add to cart/i }).should('not.exist');
@@ -60,7 +62,7 @@ describe('Product view', () => {
     cy.findByText(/1 item in cart/i).should('not.exist');
     cy.findByText(/2 items in cart/i).should('be.visible');
 
-    cy.findByRole('link', { name: /^cart$/i }).click();
+    cy.findByRole('link', { name: /shopping cart/i }).click();
 
     cy.findByRole('heading', { name: /circle/i }).should('be.visible');
     cy.findByRole('heading', { name: /rectangle/i }).should('not.exist');
