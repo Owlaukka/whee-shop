@@ -16,6 +16,10 @@ const CartItemList = styled('ul')({
   },
 });
 
+const NoItems = styled('span')({
+  fontWeight: 'bold',
+});
+
 const ShoppingCartView = () => {
   const { cartItems, clearCart } = useContext(ShoppingCartContext);
   const [isClearLoading, setIsClearLoading] = useState(false);
@@ -33,7 +37,7 @@ const ShoppingCartView = () => {
     <>
       <h1>Cart</h1>
       <CartItemList>
-        {cartItems.length === 0 && <b>No items in cart</b>}
+        {cartItems.length === 0 && <NoItems>No items in cart</NoItems>}
         {cartItems.map((item) => (
           <ShoppingCartItem key={item.id} item={item} />
         ))}

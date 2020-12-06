@@ -7,7 +7,7 @@ import { fetchProducts, IProduct } from './ProductService';
 
 const ProductList = styled('ul')({
   margin: 0,
-  padding: '2rem 0.5rem',
+  padding: '3rem 0.5rem',
   listStyle: 'none',
   '> :not(:last-child)': {
     marginBottom: '2rem',

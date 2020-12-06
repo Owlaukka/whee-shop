@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import styled from '@emotion/styled';
+import { FaShoppingCart } from 'react-icons/fa';
 
 import { ITheme } from '../theme';
 import ShoppingCartContext from '../ShoppingCart/ShoppingCartContext';
@@ -29,7 +30,7 @@ const Nav = styled('nav')<any>(({ theme }: { theme: ITheme }) => ({
 }));
 
 const NavItemList = styled.ul({
-  margin: 0,
+  margin: '0 1.7rem',
   padding: 0,
   listStyle: 'none',
   height: '100%',
@@ -42,6 +43,7 @@ const NavItem = styled.li({
 });
 
 const LogoNavItem = styled(NavItem)({
+  paddingLeft: 0,
   a: {
     textDecoration: 'none',
   },
@@ -56,12 +58,56 @@ const Logo = styled.h1({
 
 const TaglineNavItem = styled(NavItem)({
   fontStyle: 'italic',
+  paddingBottom: 0,
 });
 
 const CartNavItem = styled(NavItem)({
   marginLeft: 'auto',
   fontStyle: 'italic',
 });
+
+const ToCartNavItem = styled(NavItem)(
+  ({ theme, itemCount }: { theme?: ITheme; itemCount: number }) => ({
+    backgroundColor: 'black',
+    padding: '0.5rem',
+    borderRadius: '50%',
+    fontSize: '1.5rem',
+    transition: 'transform 200ms',
+    position: 'relative',
+    '&:hover': {
+      backgroundColor: theme!.colors.text,
+      transform: 'scale(1.1)',
+    },
+    '&:active': {
+      transform: 'scale(0.8)',
+    },
+    path: {
+      // icon color
+      color: '#FFF',
+    },
+    ...(itemCount > 0 && {
+      '&:before': {
+        content: `"${itemCount}"`,
+        backgroundColor: theme?.colors.accent,
+        position: 'absolute',
+        bottom: itemCount > 9 ? '-0.5rem' : '-0.1rem',
+        left: itemCount > 9 ? '-0.5rem' : '-0.1rem',
+        borderRadius: '50%',
+        height: itemCount > 9 ? '1.4rem' : '1rem',
+        width: itemCount > 9 ? '1.4rem' : '1rem',
+        lineHeight: itemCount > 9 ? '1rem' : '0.6rem',
+        textAlign: 'center',
+        fontSize: '1.1rem',
+      },
+    }),
+  })
+);
+
+const ToCartLink = styled(Link)({
+  display: 'flex',
+});
+
+const CartIcon = styled(FaShoppingCart)({});
 
 const resolveCartItemCountText = (cartCount: number): string => {
   if (cartCount === 0) return 'No items in cart';
@@ -82,7 +128,11 @@ const NavBar = () => {
           The most definitive shape store in the world
         </TaglineNavItem>
         <CartNavItem>{resolveCartItemCountText(cartItems.length)}</CartNavItem>
-        <Link to="/cart">Cart</Link>
+        <ToCartNavItem id="Cart" itemCount={cartItems.length}>
+          <ToCartLink to="/cart">
+            <CartIcon />
+          </ToCartLink>
+        </ToCartNavItem>
       </NavItemList>
     </Nav>
   );
