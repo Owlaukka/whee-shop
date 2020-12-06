@@ -7,6 +7,7 @@
     "start": "wp --config webpack/webpack.dev.js",
     "build": "wp --config webpack/webpack.prod.js",
     "test": "cross-env NODE_ENV=test cypress open",
+    "test-run": "cross-env NODE_ENV=test cypress run",
     "check-types": "tsc",
     "lint": "yarn run check-types && eslint src/ cypress/ --ext .js,.jsx,.ts,.tsx --report-unused-disable-directives"
   },

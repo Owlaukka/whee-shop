@@ -30,8 +30,9 @@ const Button = ({
 
 const StyledButton = styled(Button)(({ theme }: { theme?: ITheme }) => ({
   backgroundColor: theme!.colors.button.bg,
+  border: `1px solid ${theme?.colors.text}`,
   borderRadius: '0px',
-  fontSize: '1.2rem',
+  fontSize: '1rem',
   fontWeight: 'bold',
   padding: '0.3rem 1rem',
   margin: theme!.sizes.gutter,
