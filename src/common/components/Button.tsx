@@ -39,6 +39,11 @@ const StyledButton = styled(Button)(({ theme }: { theme?: ITheme }) => ({
     cursor: 'pointer',
     backgroundColor: theme!.colors.button.bgHover,
   },
+  '&:disabled': {
+    color: theme!.colors.button.disabledColor,
+    backgroundColor: theme!.colors.button.disabledBg,
+    cursor: 'not-allowed',
+  },
 }));
 
 export default StyledButton;

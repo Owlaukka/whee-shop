@@ -6,6 +6,8 @@ export interface IColors {
   button: {
     bg: string;
     bgHover: string;
+    disabledColor: string;
+    disabledBg: string;
   };
 }
 
@@ -17,6 +19,8 @@ const colors: IColors = {
   button: {
     bg: '#fff',
     bgHover: '#e9e9e9',
+    disabledColor: '#888888',
+    disabledBg: '#eeeeee',
   },
 };
 

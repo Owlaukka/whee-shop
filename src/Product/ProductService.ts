@@ -4,6 +4,7 @@ const mockProducts: IProduct[] = [
     name: 'Circle',
     description: "Perfect choice when you don't need any corners.",
     price: 999,
+    // imageSrc: 'base64 string or address to the product image if it comes from a separate service',
   },
   {
     id: 2,
@@ -24,6 +25,7 @@ export interface IProduct {
   name: string;
   description?: string;
   price: number;
+  imageSrc?: string;
 }
 
 type FetchProducts = () => Promise<IProduct[]>;

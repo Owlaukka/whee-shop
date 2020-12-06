@@ -3,6 +3,7 @@ import styled from '@emotion/styled';
 
 import ProductItem from './ProductItem';
 import useFetchData from '../common/useFetchData';
+import { MEDIA_QUERIES } from '../common/constants/breakpoints';
 import { fetchProducts, IProduct } from './ProductService';
 import { ITheme } from '../theme';
 
@@ -12,6 +13,9 @@ const ProductList = styled('ul')(({ theme }: { theme?: ITheme }) => ({
   listStyle: 'none',
   '> :not(:last-child)': {
     marginBottom: '2rem',
+    [MEDIA_QUERIES.tablet]: {
+      marginBottom: '4rem',
+    },
   },
 }));
 

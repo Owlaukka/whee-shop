@@ -30,7 +30,7 @@ const ProductInfo = styled('div')({
   },
 });
 
-const ProductIcon = styled('div')(({ theme }: { theme?: ITheme }) => ({
+const ProductIcon = styled('img')(({ theme }: { theme?: ITheme }) => ({
   gridArea: 'product-icon',
   margin: '0.3rem',
   width: '7rem',
@@ -57,7 +57,7 @@ const ProductDescription = styled('p')({
 
 const ProductInfoComponent = ({ product, noDesc = false }: Props) => (
   <ProductInfo>
-    <ProductIcon>Icon</ProductIcon>
+    <ProductIcon src={product?.imageSrc} alt={product.name} />
     <ProductName>{product.name}</ProductName>
     {!noDesc && <ProductDescription>{product.description}</ProductDescription>}
   </ProductInfo>

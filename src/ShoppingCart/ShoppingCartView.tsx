@@ -11,6 +11,7 @@ type OnClearCartClickType = () => Promise<void>;
 
 const PageTitle = styled('h1')(({ theme }: { theme?: ITheme }) => ({
   margin: `${theme!.sizes.gutter}`,
+  paddingTop: '1rem',
 }));
 
 const CartItemList = styled('ul')(({ theme }: { theme?: ITheme }) => ({

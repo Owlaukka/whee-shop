@@ -75,15 +75,13 @@ const CartNavItem = styled(NavItem)({
 
 const ToCartNavItem = styled(NavItem)(
   ({ theme, itemCount }: { theme?: ITheme; itemCount: number }) => ({
+    display: 'flex',
     backgroundColor: 'black',
     padding: theme!.sizes.gutter,
     borderRadius: '50%',
     fontSize: '1.5rem',
     transition: 'transform 200ms',
     position: 'relative',
-    [MEDIA_QUERIES.smallPhone]: {
-      marginLeft: 'auto',
-    },
     '&:hover': {
       backgroundColor: theme!.colors.text,
       transform: 'scale(1.1)',
@@ -114,7 +112,9 @@ const ToCartNavItem = styled(NavItem)(
 );
 
 const ToCartLink = styled(Link)({
-  display: 'flex',
+  [MEDIA_QUERIES.smallPhone]: {
+    marginLeft: 'auto',
+  },
 });
 
 const CartIcon = styled(FaShoppingCart)();
@@ -139,11 +139,11 @@ const NavBar = () => {
           The most definitive shape store in the world
         </TaglineNavItem>
         <CartNavItem>{resolveCartItemCountText(cartItems.length)}</CartNavItem>
-        <ToCartNavItem id="Cart" itemCount={cartItems.length}>
-          <ToCartLink aria-label="Shopping cart" to="/cart">
+        <ToCartLink aria-label="Shopping cart" to="/cart">
+          <ToCartNavItem id="Cart" itemCount={cartItems.length}>
             <CartIcon />
-          </ToCartLink>
-        </ToCartNavItem>
+          </ToCartNavItem>
+        </ToCartLink>
       </NavItemList>
     </Nav>
   );
