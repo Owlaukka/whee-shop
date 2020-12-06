@@ -10,7 +10,7 @@ import { MEDIA_QUERIES } from '../common/constants/breakpoints';
 // STYLED COMPONENTS ===================================================
 const Nav = styled('nav')<any>(({ theme }: { theme: ITheme }) => ({
   backgroundColor: theme.colors.nav,
-  height: theme.sizes.navBarHeight,
+  height: `clamp(3.5rem, 28vw, ${theme.sizes.navBarHeight})`,
   position: 'fixed',
   top: 0,
   left: 0,
@@ -76,7 +76,7 @@ const CartNavItem = styled(NavItem)({
 const ToCartNavItem = styled(NavItem)(
   ({ theme, itemCount }: { theme?: ITheme; itemCount: number }) => ({
     backgroundColor: 'black',
-    padding: '0.5rem',
+    padding: theme!.sizes.gutter,
     borderRadius: '50%',
     fontSize: '1.5rem',
     transition: 'transform 200ms',

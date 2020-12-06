@@ -5,6 +5,7 @@ import { Button } from '../common/components';
 import formatCurrency from '../common/helpers/formatCurrency';
 import { IProduct } from './ProductService';
 import ShoppingCartContext from '../ShoppingCart/ShoppingCartContext';
+import { ITheme } from '../theme';
 
 interface Props {
   product: IProduct;
@@ -14,14 +15,13 @@ const CartSection = styled('div')({
   display: 'flex',
   flexDirection: 'column',
   alignItems: 'flex-end',
-  marginTop: 'auto',
-  marginLeft: 'auto',
 });
 
-const ProductPrice = styled('div')({
+const ProductPrice = styled('div')(({ theme }: { theme?: ITheme }) => ({
   fontSize: '1.7rem',
-  marginBottom: '0.7rem',
-});
+  margin: theme!.sizes.gutter,
+  marginBottom: 0,
+}));
 
 // Loading-state should be displayed in a more elegant way in a production-grade app.
 const resolveCartButtonText = (

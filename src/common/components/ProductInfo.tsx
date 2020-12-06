@@ -6,6 +6,7 @@ import { MEDIA_QUERIES } from '../constants/breakpoints';
 
 interface Props {
   product: IProduct;
+  noDesc?: boolean;
 }
 
 const ProductInfo = styled('div')({
@@ -54,11 +55,11 @@ const ProductDescription = styled('p')({
   gridArea: 'product-description',
 });
 
-const ProductInfoComponent = ({ product }: Props) => (
+const ProductInfoComponent = ({ product, noDesc = false }: Props) => (
   <ProductInfo>
     <ProductIcon>Icon</ProductIcon>
     <ProductName>{product.name}</ProductName>
-    <ProductDescription>{product.description}</ProductDescription>
+    {!noDesc && <ProductDescription>{product.description}</ProductDescription>}
   </ProductInfo>
 );
 

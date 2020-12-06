@@ -4,7 +4,6 @@ import styled from '@emotion/styled';
 import { IProduct } from './ProductService';
 import ProductItemCartSection from './ProductItemCartSection';
 import { ProductInfo } from '../common/components';
-import { MEDIA_QUERIES } from '../common/constants/breakpoints';
 
 interface Props {
   product: IProduct;
@@ -12,12 +11,9 @@ interface Props {
 
 const ItemContainer = styled('li')({
   display: 'flex',
-  alignItems: 'center',
+  alignItems: 'flex-end',
   flexWrap: 'wrap',
   justifyContent: 'space-between',
-  [MEDIA_QUERIES.tablet]: {
-    justifyContent: 'center',
-  },
 });
 
 const ProductItem = ({ product }: Props) => (
